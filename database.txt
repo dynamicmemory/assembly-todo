@@ -1,0 +1,4 @@
+Code more assembly
+Write about coding more assembly
+Write your own language so you can build an compiler for it in assembly 
+assemble an ensemble.... ok ill stop now.
