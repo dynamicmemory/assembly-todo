@@ -1,11 +1,10 @@
- ; TODO read
- ; TODO write 
- ; TODO clear buffer  
- ; TODO newline 
  ; TODO clean screen
- ; TODO append
+ ; TODO add
+ ; TODO delete 
+ ; TODO str2int
+ ; TODO int2str (thinking about this... probably just add '0' to the input)
  ; TODO writestdout
- ; TODO windpointerback 
+ ; TODO append   -  what is append? 
 
 %include "stdlib.asm"
 
@@ -19,6 +18,11 @@ section .text
 global _start
 extern open
 extern fsize
+extern read 
+extern write  
+extern newline
+extern cleanbuff
+extern command 
 _start:
   push ebp
   mov ebp, esp
@@ -28,24 +32,57 @@ _start:
  
   mov dword [ebp - 4], eax ; move the fd into the stack
   
-  push eax 
-  call fsize
-  add esp, 4 
+  mainloop:
+    ; Get the size of the file
+    push eax 
+    call fsize
+    add esp, 4 
 
-  mov dword [ebp - 8], eax ; move the file size into the stack 
+    mov dword [ebp - 8], eax ; move the file size into the stack 
 
-  mov edx, eax 
-  mov eax, 3
-  mov ebx, [ebp-4]
-  mov ecx, file_buffer
-  int LINUS
+    ; Read
+    push dword [ebp - 4]
+    push file_buffer
+    push dword [ebp - 8]
+    call read 
+    add esp, 12
+    
+    ; print to stdout
+    push 1 
+    push file_buffer
+    push dword [ebp - 8]
+    call write
+    add esp, 12
+    
+    call newline
 
-  mov eax, 4
-  mov ebx, 1
-  mov ecx, file_buffer 
-  mov edx, [ebp-8]
-  int LINUS 
+    ; Ask user what they would like to do 
+    call command
 
+    ; control flow different options
+    cmp al, 'a'
+    je add
+
+    cmp al, 'd'
+    je delete
+    
+    cmp al, 'e'
+    je exit
+
+    jmp mainloop
+
+  ; add to the list 
+  add:
+    ; call add
+    jmp mainloop 
+  
+  ; delete from the list
+  delete:
+    ;call delete 
+    jmp mainloop
+
+  ; exit program
+  exit:
   mov esp, ebp
   pop ebp
   mov eax, 1
