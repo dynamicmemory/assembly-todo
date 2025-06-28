@@ -1,5 +1,6 @@
- ; TODO clean screen
- ; TODO add
+ ; TODO add (lots of bugs)
+ ; TODO clear is busted, double prints an added line and the a from command 
+ ; TODO abstract out moving the file pointer from read and add as its now used twice 
  ; TODO delete 
  ; TODO str2int
  ; TODO int2str (thinking about this... probably just add '0' to the input)
@@ -23,6 +24,8 @@ extern write
 extern newline
 extern cleanbuff
 extern command 
+extern clearscreen
+extern add
 _start:
   push ebp
   mov ebp, esp
@@ -33,6 +36,9 @@ _start:
   mov dword [ebp - 4], eax ; move the fd into the stack
   
   mainloop:
+
+    call clearscreen 
+
     ; Get the size of the file
     push eax 
     call fsize
@@ -61,7 +67,7 @@ _start:
 
     ; control flow different options
     cmp al, 'a'
-    je add
+    je addline
 
     cmp al, 'd'
     je delete
@@ -72,8 +78,11 @@ _start:
     jmp mainloop
 
   ; add to the list 
-  add:
-    ; call add
+  addline:
+    push dword [ebp - 4]
+    push dword [ebp -8]
+    call add
+    add esp, 8
     jmp mainloop 
   
   ; delete from the list

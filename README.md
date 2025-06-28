@@ -30,3 +30,15 @@ free in the language. Getting used to different keywords and derefferencing memo
 its not to hard, i fucking love writting in assembly, the goated language. That's all 
 I got, nothing interesting today really. When i tackle delete and write2std... that 
 will be the interesting day (maybe) I remember both being a little tricky. 
+
+
+<b><u><h3>28th of June, 2025<h3><u><b><br><br>
+So tired, bugs galore. Wrote the add logic for a new line but now having file print 
+out issues in the terminal. The way you clear the terminal in nasm from gas is a 
+bit different and isnt behaving the same. Everytime i try to add a new line it adds 
+the 'a' command from selecting add and it adds the new line to the file and to the 
+stdout even though i clear it after adding the line and right before i write the new 
+version of the file to the stdout... im sure its my own misunderstanding of some 
+voodu io stuff, but I didnt have this problem in gas, my understanding was on point 
+for it. Problem now is i had a huge day and im to tired to bash my head against the 
+wall even though I want to solve it... a task for tomorrow!

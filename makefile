@@ -1,5 +1,5 @@
-main: main.o open.o fsize.o read.o write.o newline.o command.o
-	ld -m elf_i386 main.o open.o fsize.o read.o write.o newline.o command.o -o main
+main: main.o open.o fsize.o read.o write.o newline.o command.o clearscreen.o add.o
+	ld -m elf_i386 main.o open.o fsize.o read.o write.o newline.o command.o clearscreen.o add.o -o main
 
 main.o: main.asm
 	nasm -f elf32 main.asm -o main.o
@@ -22,5 +22,11 @@ newline.o: newline.asm
 command.o: command.asm 
 	nasm -f elf32 command.asm -o command.o 
 
+clearscreen.o: clearscreen.asm 
+	nasm -f elf32 clearscreen.asm -o clearscreen.o 
+
+add.o: add.asm 
+	nasm -f elf32 add.asm -o add.o
+
 clean:
-	rm main main.o open.o fsize.o read.o write.o newline.o command.o
+	rm main main.o open.o fsize.o read.o write.o newline.o command.o add.o
