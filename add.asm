@@ -25,7 +25,7 @@ add:
   push q_size
   call write
   add esp, 12 
-  call clearscreen
+
   ;get answert in buffer 
   push 0
   push answer_buffer 
@@ -40,7 +40,7 @@ add:
   je done
 
   mov byte [answer_buffer + ecx], 0x0A 
-  inc ecx 
+  inc eax 
 
   done:
 
@@ -57,7 +57,6 @@ add:
   mov ecx, $0
   mov edx, $0 
   int LINUS 
-
   
   mov esp, ebp 
   pop ebp 

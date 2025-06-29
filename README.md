@@ -42,3 +42,22 @@ version of the file to the stdout... im sure its my own misunderstanding of some
 voodu io stuff, but I didnt have this problem in gas, my understanding was on point 
 for it. Problem now is i had a huge day and im to tired to bash my head against the 
 wall even though I want to solve it... a task for tomorrow!
+
+
+<b><u><h3>29th of June, 2025<h3><u><b><br><br>
+Smooooth, spent the last hour running around the code testing and trying to isolate
+where all the problems could be... I realised (finally) that I was passing the file 
+descriptor to my file size function, which needs the file name... somehow it was 
+working though... NASM things I guess, again, im a GAS boi till this project. So I 
+changed that to filename, then the buffer started printing all sorts of weird stuff 
+out and I instantly knew I had cooked the file size function... and there it was.. 
+I was moving the address of where the file size was to eax and not the actual size..
+somehow up until now the app had run almost seamlessly somehow... it really shouldnt 
+of. Anyway, changed that, then rewound the point back to the start of the file after 
+writing the new line and boom, output problems gone. Feels good, silly mistake, lost 
+an hour and a half, maybe longer if you count last night too... oh well, onto the 
+delete function (thats the spicest) then we just gotta append a number to the start 
+of every line in the file as they are being read out to stdout and we are DONE! 
+Which im happy about as I had a new idea for my next project I wanna do.. a tool for 
+something I use every day. Unsure if ill write it in assembly or C, anyway im getting 
+off topic.

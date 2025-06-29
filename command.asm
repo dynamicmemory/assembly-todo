@@ -45,7 +45,6 @@ command:
     jmp flush_buffer
 
   flushed:
-
   mov al, [input_buffer] 
 
   mov esp, ebp

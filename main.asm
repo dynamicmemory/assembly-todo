@@ -1,11 +1,8 @@
- ; TODO add (lots of bugs)
- ; TODO clear is busted, double prints an added line and the a from command 
- ; TODO abstract out moving the file pointer from read and add as its now used twice 
  ; TODO delete 
  ; TODO str2int
  ; TODO int2str (thinking about this... probably just add '0' to the input)
  ; TODO writestdout
- ; TODO append   -  what is append? 
+ ; TODO abstract out moving the file pointer from read and add as its now used twice 
 
 %include "stdlib.asm"
 
@@ -40,7 +37,7 @@ _start:
     call clearscreen 
 
     ; Get the size of the file
-    push eax 
+    push FNAME
     call fsize
     add esp, 4 
 
