@@ -23,6 +23,7 @@ extern cleanbuff
 extern command 
 extern clearscreen
 extern add
+extern delete
 _start:
   push ebp
   mov ebp, esp
@@ -67,7 +68,7 @@ _start:
     je addline
 
     cmp al, 'd'
-    je delete
+    je deleteline
     
     cmp al, 'e'
     je exit
@@ -83,8 +84,10 @@ _start:
     jmp mainloop 
   
   ; delete from the list
-  delete:
-    ;call delete 
+  deleteline:
+    push dword [ebp - 4]
+    push dword [ebp -8]
+    call delete 
     jmp mainloop
 
   ; exit program
