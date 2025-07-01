@@ -61,3 +61,20 @@ of every line in the file as they are being read out to stdout and we are DONE!
 Which im happy about as I had a new idea for my next project I wanna do.. a tool for 
 something I use every day. Unsure if ill write it in assembly or C, anyway im getting 
 off topic.
+
+<b><u><h3>1st of July, 2025<h3><u><b><br><br>
+Im not sure if i worked on this yesterday and just didnt write here... highly likely.
+Ive been so busy, onto whats happening in the project though. So I think I wrote the 
+delete functionality yesterday and completely destroyed the program. Today I came in 
+and fixed it. Delete works though I was stuck for about an hour and a half trying to 
+figure out if my int converter was working... turns out it was and it was edi getting 
+pummelled by another function that was throwing all the calculations I was trying to 
+do on it off. It just took so long to keep narrowing down each piece... I wrote to much 
+at once will limited testing... kinda like what i just did with the writetostdout 
+function.... which I will fix tomorrow at which point this project will be finished...
+I gotta say, I like GAS alot, NASM has werid quirks to it, GAS feels right, but I 
+learnt on it, so thats why I feel like that I guess. I feel a little shakey on how 
+im refferencing registers, GAS feels more intuitive again, but also again, im just 
+used to it. Im probably just being biased, anyway, hopefully tomorrow this one gets 
+put to sleep and I move onto more uni work and maybe that tool I was talking about 
+building. 

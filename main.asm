@@ -1,4 +1,5 @@
- ; TODO delete 
+ ; TODO delete is finished, but the end got messy, clean it up and abstract 
+ ; TODO build a better open and build close to perhaps 
  ; TODO str2int
  ; TODO int2str (thinking about this... probably just add '0' to the input)
  ; TODO writestdout
@@ -24,6 +25,7 @@ extern command
 extern clearscreen
 extern add
 extern delete
+extern writestdout
 _start:
   push ebp
   mov ebp, esp
@@ -51,12 +53,17 @@ _start:
     call read 
     add esp, 12
     
-    ; print to stdout
-    push 1 
-    push file_buffer
+    push dword [ebp - 4]
     push dword [ebp - 8]
-    call write
-    add esp, 12
+    call writestdout
+    add esp, 8
+
+    ; print to stdout
+    ; push 1 
+    ; push file_buffer
+    ; push dword [ebp - 8]
+    ; call write
+    ; add esp, 12
     
     call newline
 
@@ -86,8 +93,11 @@ _start:
   ; delete from the list
   deleteline:
     push dword [ebp - 4]
-    push dword [ebp -8]
+    push dword [ebp - 8]
     call delete 
+    
+    mov [ebp - 4], eax 
+    
     jmp mainloop
 
   ; exit program
@@ -97,3 +107,6 @@ _start:
   mov eax, 1
   xor ebx, ebx
   int LINUS
+
+
+

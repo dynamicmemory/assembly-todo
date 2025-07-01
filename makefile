@@ -1,5 +1,5 @@
-main: main.o open.o fsize.o read.o write.o newline.o command.o clearscreen.o add.o delete.o
-	ld -m elf_i386 main.o open.o fsize.o read.o write.o newline.o command.o clearscreen.o add.o delete.o -o main
+main: main.o open.o fsize.o read.o write.o newline.o command.o clearscreen.o add.o delete.o writestdout.o
+	ld -m elf_i386 main.o open.o fsize.o read.o write.o newline.o command.o clearscreen.o add.o delete.o writestdout.o -o main
 
 main.o: main.asm
 	nasm -f elf32 main.asm -o main.o
@@ -31,5 +31,8 @@ add.o: add.asm
 delete.o: delete.asm 
 	nasm -f elf32 delete.asm -o delete.o
 
+writestdout.o: writestdout.asm 
+	nasm -f elf32 writestdout.asm -o writestdout.o
+
 clean:
-	rm main main.o open.o fsize.o read.o write.o newline.o command.o add.o delete.o
+	rm main main.o open.o fsize.o read.o write.o newline.o command.o add.o delete.o writestdout.o
