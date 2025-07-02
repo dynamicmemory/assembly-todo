@@ -10,10 +10,14 @@ section .bss
 section .text
 global cleanbuff
 cleanbuff:
+  push ebp 
+  mov ebp, esp 
   mov eax, 0
-  mov edi, [esp + buffer]
-  mov ecx, [esp + size]
+  mov edi, [ebp + buffer]
+  mov ecx, [ebp + size]
   shr ecx, 2 
   rep stosd
 
+  mov esp, ebp
+  pop ebp
   ret

@@ -18,11 +18,23 @@ section .text
 extern write 
 extern read 
 extern open 
+extern cleanbuff
 global delete
 delete:
   push ebp 
   mov ebp, esp 
   sub esp, 4
+
+
+  push file_buffer
+  push BUFFERSIZ
+  call cleanbuff
+  add esp, 8 
+
+  push new_file 
+  push BUFFERSIZ
+  call cleanbuff
+  add esp, 8 
 
   ; Ask which line to delete 
   push 1 
@@ -76,30 +88,31 @@ delete:
 
     dec edi 
     loop2:
-    mov eax, [file_buffer + ecx] 
-    mov [new_file + edx], al
-    inc ecx 
-    inc edx 
     cmp al, 0x0A 
     je loop 
 
+    mov eax, [file_buffer + ecx] 
+    mov [new_file + edx], al
+
+    inc ecx 
+    inc edx 
+
     jmp loop2 
   loop3:
-    inc ecx 
-    mov al, [file_buffer + ecx]
     cmp al, 0x0A
     je loop4 
 
+    mov al, [file_buffer + ecx]
+    inc ecx 
     jmp loop3
   loop4:
-    inc ecx
-    inc edx
+    cmp esi, ecx 
+    je loop_end 
 
     mov eax, [file_buffer + ecx]
     mov [new_file + edx], al
-
-    cmp esi, ecx 
-    je loop_end 
+    inc ecx
+    inc edx
 
     jmp loop4
   loop_end:

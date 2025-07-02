@@ -78,3 +78,14 @@ im refferencing registers, GAS feels more intuitive again, but also again, im ju
 used to it. Im probably just being biased, anyway, hopefully tomorrow this one gets 
 put to sleep and I move onto more uni work and maybe that tool I was talking about 
 building. 
+
+<b><u><h3>2nd of July, 2025<h3><u><b><br><br>
+And its done!... kinda, its fully functional, a few potential errors could occur, 
+a few optimization could be made, alot of cleaning up and simplifying to go. But as 
+for what it needs to do, it does it and it shouldnt break except for edgeish cases. 
+Im very busy with other stuff for the moment so this will probably go on the back 
+burner and I may never get back to it, but damn assembly is so much fun and this 
+was such a fun learning experience. I feel like I only have scratch the surface 
+with instructions and whats possible, but I think that is for future, bigger and 
+more useful projects to discover. For now, uni has my full attention and the 10 
+languages they got me writting in daily!

@@ -1,8 +1,8 @@
+ ; TODO writestdout needs cleaning and abstraction, it works but barely 
  ; TODO delete is finished, but the end got messy, clean it up and abstract 
  ; TODO build a better open and build close to perhaps 
  ; TODO str2int
- ; TODO int2str (thinking about this... probably just add '0' to the input)
- ; TODO writestdout
+ ; TODO int2str
  ; TODO abstract out moving the file pointer from read and add as its now used twice 
 
 %include "stdlib.asm"
@@ -97,7 +97,12 @@ _start:
     call delete 
     
     mov [ebp - 4], eax 
-    
+
+    push file_buffer
+    push BUFFERSIZ
+    call cleanbuff
+    add esp, 8
+
     jmp mainloop
 
   ; exit program
